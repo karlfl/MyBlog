@@ -3,6 +3,11 @@ languageCode = 'en-us'
 title = 'Karl Fleischmann'
 theme = 'PaperMod'
 
+ignoreLogs = ['warning-goldmark-raw-html']
+
 [caches]
   [caches.images]
     dir = ':cacheDir/images'
+
+[params]
+name = 'Karl Fleischmann'
