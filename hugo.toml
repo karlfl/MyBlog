@@ -1,7 +1,7 @@
 baseURL = 'https://blog.karlfleischmann.com/'
 languageCode = 'en-us'
 title = 'Karl Fleischmann'
-theme = 'ananke'
+theme = 'PaperMod'
 
 [caches]
   [caches.images]
