@@ -73,28 +73,33 @@ params:
   ShowAllPagesInArchive: true
   ShowPageNums: true
   ShowToc: true
-  # comments: false
+  comments: true
   images: ["images/papermod-cover.png"]
 
   profileMode:
-    enabled: false
-    title: PaperMod
-    imageUrl: "#"
+    enabled: true
+    title: A Blog by Karl Fleischmann
+    imageUrl: "myimage.jpg"
     imageTitle: my image
     # imageWidth: 120
     # imageHeight: 120
     buttons:
-      - name: About
-        url: about    
-      - name: Archives
-        url: archives
+      - name: Recent Posts
+        url: posts  
       - name: Tags
         url: tags
+      - name: Archives
+        url: archives
+      - name: About
+        url: about
 
   homeInfoParams:
     Title: "A Blog by Karl Fleischmann"
     Content: >
-      👋 Hi, Welcome to my mind!
+      👋 Hi, Welcome to my mind! <br/> <br/>
+      I'm a software developer by trade and author of this blog by choice. 
+      The posts here will be somewhat random but will focus on software, microcontrollers, and electronics, with periodic adventures into other areas of interest.  
+      If you find something useful take a minute to re-post it on you're favorite medium and give me a shout-out.
 
   socialIcons:
     - name: github
