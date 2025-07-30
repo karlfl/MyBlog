@@ -136,15 +136,15 @@ ln -s /home/karl/Apps/STMicroelectronics /home/karl/STMicroelectronics
 
 I should note that when I setup my Windows box to test these steps over there, I didn't have this issue.  So if you're a Windows user you can ignore this section.  But, perhaps, if you're reading this sentence, it might be too late.  Sorry.
 
-![Netduino No Longer Stocked at Adafruit](/Netduino2NoLongerStocked.png)
-
 ## Bottom Line
 Wow!  I cannot believe that any of this worked.  I plan on taking some more time to fully document the steps for both STMCubeIDE and Arduino.  I'm hoping that the Netduino community and those that still have these boards around find this article helpful and perhaps a bit entertaining. 
 
-The Netduino 2 may not be stocked anymore, but it's definitely not dead.  If you own one of these or maybe one of its siblings, it's possible to still put them to use.  They don't require C#, .Net, or even Visual Studio.  If you can program an Arduino you can program one of these. They use a standard STMicroelectronics chip (STM32F205RFT6) and are wired so you can program them directly from the USB.  All you need is the Arduino IDE along with the board support files provided by STMicroelectronics.  With a few board configuration tweaks, you'll be off and running.  Or if you're more adventurous, you can use the STM32CubeIDE.  Before long, you and your blinky program will be lighting up the world, or... maybe just your living room.  But hey it's blue and you wrote the code that made it blink!  You rock!
+![Netduino No Longer Stocked at Adafruit](/Netduino2NoLongerStocked.png)
 
-I hope you've enjoyed this journey as much as I have.   
+The Netduino 2 may not be stocked anymore, but it's definitely not dead.  If you own one of these or maybe one of its siblings, you can still put them to use.  They don't require C#, .Net, or even Visual Studio.  If you can program an Arduino you can program one of these. They use a standard STMicroelectronics chip (STM32F205RFT6) and are wired so you can program them directly from the USB.  All you need is the Arduino IDE along with the board support files provided by STMicroelectronics.  With a few board configuration tweaks, you'll be off and running.  Or if you're more adventurous, you can use the STM32CubeIDE.  Before long, you and your blinky program will be lighting up the world, or... maybe just your living room.  But hey it's blue and you wrote the code that made it blink!  You rock!
 
-Let us know what you're able to create with you're ~~Net~~duino.
+I hope you've enjoyed this journey as much as I have and I hope your inspired to keep coding.
+
+Let me know what you're able to create with you're ~~Net~~duino.
 
 ## Stay curious!
