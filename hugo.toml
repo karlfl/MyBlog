@@ -1,0 +1,4 @@
+baseURL = 'https://karlfleischmann.com/'
+languageCode = 'en-us'
+title = 'Karl Fleischmann'
+theme = 'ananke'
