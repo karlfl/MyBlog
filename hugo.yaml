@@ -2,7 +2,7 @@
 # contain http (as opposeed to https) URLs. This would affect Google indexing of your URLs.
 baseURL: "https://blog.karlfleischmann.com/"
 title: "And Many Lines to Code"
-copyright: "© Karl Fleischmann"
+# copyright: "© Karl Fleischmann"
 theme: [PaperMod]
 
 enableInlineShortcodes: true
@@ -62,6 +62,7 @@ params:
   defaultTheme: auto
   # disableThemeToggle: true
   ShowShareButtons: true
+  Sharebuttons: x, linkedin, reddit
   ShowReadingTime: true
   # disableSpecial1stPost: true
   displayFullLangName: true
