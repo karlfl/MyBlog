@@ -1,4 +1,8 @@
-baseURL = 'https://karlfleischmann.com/'
+baseURL = 'https://blog.karlfleischmann.com/'
 languageCode = 'en-us'
 title = 'Karl Fleischmann'
 theme = 'ananke'
+
+[caches]
+  [caches.images]
+    dir = ':cacheDir/images'
