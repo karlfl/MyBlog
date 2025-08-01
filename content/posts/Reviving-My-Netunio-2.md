@@ -1,15 +1,12 @@
 ---
 date: "2025-07-30T12:31:35-04:00"
 draft: false
-title: Reviving My Netduino 2 (without the .Net MF)
-description: "The Netduino series of boards have been around for several decades and saw a limited level of success for the first decade or so. However, as a development ecosystem they haven’t stood the test of time. The original development toolchain has gone into abandonment and been archived. But as a hardware platform, they are a still great boards, especially the Netduino 2 and later, with fully supported mainstream processors. You might not be able to use .Net or C#, but with toolsets from Arduino and STMicroelectronics you can still create amazing things with these easy-to-use Arduino compatible boards. Don’t throw them away! The notes below describe how I rediscovered their usefulness, albeit with a different set of tools."
+title: Reviving My Netduino 2
+description: "(without the .Net MF)"
 tags: ["Netduino", "Arduino", "STCube"]
-categories: ["Arduinu", "MCU"]
+categories: ["Arduino", "MCU"]
 series: ["Netduino"]
 ShowToc: true
-TocOpen: false
-social:
-  fediverse_creator: "@adityatelange@mastodon.social"
 ---
 
 The Netduino series of boards have been around for several decades and saw a limited level of success for the first decade or so. However, as a development ecosystem they haven't stood the test of time.  The original development toolchain has gone into abandonment and been archived. But as a hardware platform, they are a still great boards, especially the Netduino 2 and later, with fully supported mainstream processors.  You might not be able to use .Net or C#, but with toolsets from Arduino and STMicroelectronics you can still create amazing things with these easy-to-use Arduino compatible boards.  Don't throw them away!  The notes below describe how I rediscovered their usefulness, albeit with a different set of tools.
