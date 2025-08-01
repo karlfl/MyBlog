@@ -9,17 +9,17 @@ series: ["Netduino"]
 ShowToc: true
 ---
 
-If you have one of these in your toolbox, or have ever had one, you might've thought they were obsolete.  Their .Net support and tools are still around but unfortunately have gone dormant and the .Net MicroFramework toolchain for these boards may not even work on modern operating systems.  However, this black clad board with it's blue GPIO pins is not dead.  It boasts a powerful 32-bit ARM&reg; microcontroller running at 25Mhz that can run custom firmware and even work with Arduino.  
+If you have one of these in your toolbox you might've thought they were obsolete.  Their .Net support and tools are still around but unfortunately have gone dormant and the .Net MicroFramework toolchain for these boards may not even work on modern operating systems.  However, this black clad board with it's blue GPIO pins is not dead.  It boasts a powerful 32-bit ARM&reg; microcontroller running at 25Mhz that can run custom firmware and even work with Arduino.  
 
-Yep, that's possible and without crossing wires, waving any magic wands, or opening a worm hole to an alternate universe. This post will explain how to setup the Arduino IDE to program your Netduino 2.   If you want to skip the fluff and get down to programming, jump to the [Arduino setup](#setting-up-the-arduino-ide) section below.
+Yep, that's possible and without crossing wires, waving any magic wands, or opening a worm hole to an alternate universe. I'm about to explain how to setup the Arduino IDE to program your Netduino 2.  That means no more .Net MicroFramework, no more Visual Studio 2015.  Just you, your Netduino board and the Arduino IDE.  If you want to skip the fluff and get down to programming, jump to the [Arduino setup](#setting-up-the-arduino-ide) section below.
 
 ![Netduino 2](/Netduino2.jpg)
 
-*Note:  The details here are specifically for the Netduino 2, but there is a strong possibility that they will work with other Netduino boards.  If you own a different Netduino based on the STM32 chipset, try these steps, altering the board settings as appropriately, and let me know if you get it working.*
+*Note:  The details here are specifically for the Netduino 2, but there is a strong possibility that they will work with other Netduino boards.  If you own a different Netduino based on the STM32 chipset, try these steps, altering the board settings as needed, and let me know if you get it working.*
 
 # Board Specifics
 
-The Netduino 2 board is built with a standard Arduino Uno compatable footprint.  It has a 25Mhz clock crystal, [USB OTG](https://en.wikipedia.org/wiki/USB_On-The-Go) support, power LED, user-programmable blue LED, user/boot button, 6 Analog pins, and 13-15 digital pins.  If you take a look at the [Schematic](/Schematic_N2_20Dec16.pdf), you'll find the microcontroller is the [STM23F205RFT6](https://www.st.com/en/microcontrollers-microprocessors/stm32f205rf.html), a high-performance ARM&reg; Cortex&reg;-M2 32-bit processor manufactured by STMicroelectronics with a [10 year longevity committment](https://www.st.com/content/st_com/en/support/resources/product-longevity.html#10-year-longevity).  Which means they'll support it until at least 2035.  Nice to know this board is far from being obsolete.  If you're interested you can read more about this chip in it's [datasheet](https://www.st.com/resource/en/reference_manual/rm0033-stm32f205xx-stm32f207xx-stm32f215xx-and-stm32f217xx-advanced-armbased-32bit-mcus-stmicroelectronics.pdf). 
+The Netduino 2 board is built with a standard Arduino Uno compatable footprint.  It has a 25Mhz clock crystal, [USB OTG](https://en.wikipedia.org/wiki/USB_On-The-Go) support, power LED, user-programmable blue LED, user/boot button, 6 Analog pins, and 13-15 digital pins.  If you take a look at the [Schematic](/Schematic_N2_20Dec16.pdf), you'll find the microcontroller is the [STM23F205RFT6](https://www.st.com/en/microcontrollers-microprocessors/stm32f205rf.html), a high-performance ARM&reg; Cortex&reg;-M2 32-bit processor manufactured by STMicroelectronics with a [10 year longevity committment](https://www.st.com/content/st_com/en/support/resources/product-longevity.html#10-year-longevity).  Which means they'll support it until at least 2035.  Nice to know this board is far from being obsolete.  If you're interested you can read more about this chip in it's [datasheet](https://www.st.com/resource/en/datasheet/stm32f205rb.pdf). 
 
 When [Wilderness Labs LLC](https://www.wildernesslabs.co) designed this board they knew users would want to keep their .Net firmware up to date, so they configured it to allow you to put it into bootloader mode.  That also means you can load you're own firmware and use all of the tools in the [STMCube ecosystem](https://www.st.com/content/st_com/en/ecosystems/stm32cube-ecosystem.html) to program this device (more details on that in future posts).  But, whats even more intriguing is that you can use the [STM32duino](https://github.com/stm32duino) board support package to enable the Arduino IDE to recognize, program and possibly even debug this board.  Wow! I have to admit I really didn't think that was possible.  Before I tried this, I thought this board would only handle development using .Net MF development.  Well, hold on, we're on our way to bending time and space.
 
@@ -204,8 +204,58 @@ Let's take this a step further and get our beautiful blue LED to blink on comman
 
     ```
 
+# Wrap Up
 
-    |  Board Pin   |  MCU Pin   |
-    | ------------ | ---------- |
-    |   PA10       | Blue LED   |
-    |   PB11       | User Button|
+Well you did it!  Nice job!  You just taught your Netduino a few new tricks.  You can officially call it a ~~Net~~duino.  If you ran into any problems you couldn't solve or noticed something amiss in the steps above let me know and I'll do my best to fix it.  Otherwise I'll wish you great success with your revived ~~Net~~duino.  May you always...
+
+## Stay Curious!
+
+# Appendix A - STM32F205 Pin to Arduino Pin Mapping
+
+To help you with programming your ~~Net~~duino with Arduino you'll need to know how the pins are mapped between the MCU and the boards pins.  Here's what I was able to extract from the Netduino schematic.
+
+|	  MCU Pin 	|	  Board Pin 	|
+|	----------	|	----------	|
+|	   PC00   	|	 A0   	|
+|	   PC01   	|	 A1   	|
+|	   PC02   	|	 A2   	|
+|	   PC03   	|	 A3   	|
+|	   PC04   	|	 A4   	|
+|	   PC05   	|	 A5   	|
+|	----------	|	----------	|
+|	   PA10   	|	 Blue LED    	|
+|	   PC13   	|	 Power LED 	|
+|	   PB11   	|	 User Button 	|
+|	   PC14   	|	 User Button 	|
+|	----------	|	----------	|
+|	   PB07   	|	 SCA  	|
+|	   PB06   	|	 SCL  	|
+|	   PA10   	|	 USB OTG DB  	|
+|	----------	|	----------	|
+|	   PA11   	|	 USB OTG DP  	|
+|	   PA09   	|	 USB OTG VBUS 	|
+|	----------	|	----------	|
+|	   PC07   	|	 D0   	|
+|	   PC06   	|	 D1   	|
+|	   PA03   	|	 D2   	|
+|	   PA02   	|	 D3   	|
+|	   PB12   	|	 D4   	|
+|	   PB08   	|	 D5   	|
+|	   PB09   	|	 D6   	|
+|	   PA01   	|	 D7   	|
+|	   PA00   	|	 D8   	|
+|	   PA06   	|	 D9   	|
+|	   PB10   	|	 D10    	|
+|	   PB15   	|	 D11  	|
+|	   PB14   	|	 D12  	|
+|	----------	|	----------	|
+|	   PA14   	|	 JTAG CLK    	|
+|	   PA15   	|	 JTAG DI     	|
+|	   PA13   	|	 JTAG DIO    	|
+|	   PB03   	|	 JTAG DO     	|
+
+# Appendix B - Further Exploring the MCU
+
+As I read the datasheet and look again at the Netduino schematic, I see that this MCU can do quite a bit more than may be advertized.  There are several other features that may be worth the time to explore.  Among them are, the CAN bus, SPI, UART/USART, PWM.  At first glance it would seem that the Netduino board would support all of these.  The CAN may require an external transciever, but the pins seem to be available.  CAN1 seems to be available on PB8/9 pins which map to D6/D10 on the Netduino.
+
+Another area worth exploring would be the JTAG connector and the possibility of using an ST-Link hardware to run the Arduino debugger.  This [ST Community Post](https://community.st.com/t5/stm32-mcus/stm32-arduino-stm32duino-tutorial/ta-p/49649) indicates that it is possible for some ST Boards to be debugged using Arduino.  The only difference is that the ST boards come with a built in ST-Link programmer/debugger.  It might be possible to use the JTAG connector on the Netduino to attach the ST-Link device and use it within Arduino.
