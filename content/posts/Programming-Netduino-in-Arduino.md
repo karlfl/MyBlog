@@ -137,7 +137,7 @@ Well Done!
 
 # Blinking on Button Press
 
-Let's take this a step further and get our beautiful blue LED to blink on command.  This step involves us using the built in button (PB11) to toggle our LED (PA10) instead of using a delay.  You can use your current Blink making some adjustments.
+Let's take this a step further and get our beautiful blue LED to blink on command.  This step involves us using the built in button (PB11/PC14) to toggle our LED (PA10) instead of using a delay.  You can use your current Blink making some adjustments.
 
 1. Add the following lines to the top of your sketch, (just above the setup() function) to help us track the state of the LED and button.
     ```c
@@ -179,11 +179,11 @@ Let's take this a step further and get our beautiful blue LED to blink on comman
 
     // the setup function runs once when you press reset or power the board
     void setup() {
-    // initialize digital pin LED_BUILTIN as an output.
-    pinMode(PA10, OUTPUT);
+        // initialize digital pin LED_BUILTIN as an output.
+        pinMode(PA10, OUTPUT);
 
-    pinMode(PB11, INPUT_PULLUP); // Set button pin as input with pull-up resistor
-    digitalWrite(PA10, LOW);       // Ensure LED starts OFF
+        pinMode(PB11, INPUT_PULLUP); // Set button pin as input with pull-up resistor
+        digitalWrite(PA10, LOW);       // Ensure LED starts OFF
     }
 
     // the loop function runs over and over again forever
@@ -205,50 +205,51 @@ Let's take this a step further and get our beautiful blue LED to blink on comman
     ```
 
 # Extra Credit
+
 Now that you've got the basics down, try and figure out how to write some messages back to the serial console. First make sure you've set the USB Support to 'CDC generic 'Serial' supersede U(S)ART' in the "Tools" menu.  You'll need to add some code to the setup() fuction to enable the serial port and then some Serial.print() or Serial.println() method calls to send out the text.  Once you've uploaded your code to the ~~Net~~duino and the device has reset, open the Serial Monitor in the IDE watch for your messages to appear.  If you run into difficulities, expand the next section to see the previous example outfitted with some serial output.  
 
 <details>
-  <summary>Show me the code!</summary>
+<summary>Show me the code!</summary>
 
-  ## Button Blink with Serial Output
+### Button Blink with Serial Output
 
-    ```c
-    // Variables to track button and LED states
-    bool ledState = false;    // Current state of the LED (ON/OFF)
-    bool lastButtonState = LOW; // Previous state of the button
-    bool currentButtonState = LOW;
+```c
+// Variables to track button and LED states
+bool ledState = false;    // Current state of the LED (ON/OFF)
+bool lastButtonState = LOW; // Previous state of the button
+bool currentButtonState = LOW;
 
-    // the setup function runs once when you press reset or power the board
-    void setup() {
+// the setup function runs once when you press reset or power the board
+void setup() {
     Serial.begin(9600); // Start serial communication at 9600 baud
     Serial.println("Hello, Serial Communication!");
 
     // initialize digital pin LED_BUILTIN as an output.
     pinMode(PA10, OUTPUT);
 
-    pinMode(PC14, INPUT_PULLUP); // Set button pin as input with pull-up resistor
+    pinMode(PB11, INPUT_PULLUP); // Set button pin as input with pull-up resistor
     digitalWrite(PA10, LOW);       // Ensure LED starts OFF
+}
+
+// the loop function runs over and over again forever
+void loop() {
+    // Read the current state of the button
+    currentButtonState = digitalRead(PB11);
+
+    // Check if the button was pressed and released (transition from HIGH to LOW)
+    if (lastButtonState == HIGH && currentButtonState == LOW) {
+        ledState = !ledState;          // Toggle the LED state
+        digitalWrite(PA10, ledState); // Update the LED
+        delay(50);                     // Debounce delay
+        Serial.print("LED is ");
+        Serial.println((ledState == LOW)? "Off" : "On");
     }
 
-    // the loop function runs over and over again forever
-    void loop() {
-        // Read the current state of the button
-        currentButtonState = digitalRead(PC14);
+    // Update the last button state
+    lastButtonState = currentButtonState;
+}
 
-        // Check if the button was pressed and released (transition from HIGH to LOW)
-        if (lastButtonState == HIGH && currentButtonState == LOW) {
-            ledState = !ledState;          // Toggle the LED state
-            digitalWrite(PA10, ledState); // Update the LED
-            delay(50);                     // Debounce delay
-            Serial.print("LED is ");
-            Serial.println((ledState == LOW)? "Off" : "On");
-        }
-
-        // Update the last button state
-        lastButtonState = currentButtonState;
-    }
-
-    ```
+```
 
 </details>
 
@@ -274,7 +275,7 @@ To help you with programming your ~~Net~~duino with Arduino you'll need to know 
 |	   PA10   	|	 Blue LED    	|
 |	   PC13   	|	 Power LED 	|
 |	   PB11   	|	 User Button 	|
-|	   PC14   	|	 User Button 	|
+|	   PB11   	|	 User Button 	|
 |	----------	|	----------	|
 |	   PB07   	|	 SCA  	|
 |	   PB06   	|	 SCL  	|
