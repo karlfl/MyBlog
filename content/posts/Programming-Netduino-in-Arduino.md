@@ -2,7 +2,7 @@
 date: "2025-08-04T20:35:35-04:00"
 draft: false
 title: Programming the Netduino with Arduino
-description: "Believe it or not, it's an Arduino compatible device."
+description: "It is an Arduino compatible device, you know."
 tags: ["Netduino", "Arduino", "STCube"]
 categories: ["Arduino", "MCU"]
 series: ["Netduino"]
