@@ -1,6 +1,6 @@
 ---
 date: "2025-07-30T12:31:35-04:00"
-draft: true
+draft: false
 title: Programming the Netduino with Arduino
 description: "Believe it or not, it's an Arduino compatible device."
 tags: ["Netduino", "Arduino", "STCube"]
@@ -9,9 +9,9 @@ series: ["Netduino"]
 ShowToc: true
 ---
 
-If you have one of these in your toolbox you might've thought they were obsolete.  Their .Net support and tools are still around but unfortunately have gone dormant and the .Net MicroFramework toolchain for these boards may not even work on modern operating systems.  However, this black clad board with it's blue GPIO pins is not dead.  It boasts a powerful 32-bit ARM&reg; microcontroller running at 25Mhz that can run custom firmware and even work with Arduino.  
+If you have one of these in your toolbox you might've thought they were obsolete.  Their .Net Microframework and tools are still around but unfortunately those projects have gone dormant and the toolchain for these boards may not even work on modern operating systems.  However, this black clad board with it's blue pins is not dead.  It boasts a powerful 32-bit ARM&reg; microcontroller running at 25Mhz that can run custom firmware and even work with Arduino.  
 
-Yep, that's possible and without crossing wires, waving any magic wands, or opening a worm hole to an alternate universe. I'm about to explain how to setup the Arduino IDE to program your Netduino 2.  That means no more .Net MicroFramework, no more Visual Studio 2015.  Just you, your Netduino board and the Arduino IDE.  If you want to skip the fluff and get down to programming, jump to the [Arduino setup](#setting-up-the-arduino-ide) section below.
+Yep, that's possible without crossing wires, waving any magic wands, or opening a worm hole to an alternate universe. This post will explain how to setup the Arduino IDE to program your Netduino 2.  That means no more .Net MicroFramework, no more Visual Studio 2015.  Just you, your Netduino and the Arduino IDE.  If you want to skip the fluff and get down to programming, jump to the [Arduino setup](#setting-up-the-arduino-ide) section below.
 
 ![Netduino 2](/Netduino2.jpg)
 
@@ -49,7 +49,7 @@ STMicroelectronics manages a [Github organization called STM32duino](https://git
    * You'll notice that your Tools menu now has more options.
    * From the Tools menu, set the following additional options
      * Board Port Number = 'STM32F205RFTx'
-     * Upload Method 'STM32CubeProgrammer (DFU)'
+     * Upload Method = 'STM32CubeProgrammer (DFU)'
      * USB Support = 'CDC generic 'Serial' supersede U(S)ART' (necessary for the Serial Monitor to work)
 
 # Blinking the LED
@@ -272,18 +272,6 @@ To help you with programming your ~~Net~~duino with Arduino you'll need to know 
 |	   PC04   	|	 A4   	|
 |	   PC05   	|	 A5   	|
 |	----------	|	----------	|
-|	   PA10   	|	 Blue LED    	|
-|	   PC13   	|	 Power LED 	|
-|	   PB11   	|	 User Button 	|
-|	   PB11   	|	 User Button 	|
-|	----------	|	----------	|
-|	   PB07   	|	 SCA  	|
-|	   PB06   	|	 SCL  	|
-|	   PA10   	|	 USB OTG DB  	|
-|	----------	|	----------	|
-|	   PA11   	|	 USB OTG DP  	|
-|	   PA09   	|	 USB OTG VBUS 	|
-|	----------	|	----------	|
 |	   PC07   	|	 D0   	|
 |	   PC06   	|	 D1   	|
 |	   PA03   	|	 D2   	|
@@ -298,10 +286,22 @@ To help you with programming your ~~Net~~duino with Arduino you'll need to know 
 |	   PB15   	|	 D11  	|
 |	   PB14   	|	 D12  	|
 |	----------	|	----------	|
+|	   PB07   	|	 SCA  	|
+|	   PB06   	|	 SCL  	|
+|	----------	|	----------	|
+|	   PA10   	|	 Blue LED    	|
+|	   PC13   	|	 Power LED 	|
+|	   PB11   	|	 User Button 	|
+|	   PC14   	|	 User Button 	|
+|	----------	|	----------	|
 |	   PA14   	|	 JTAG CLK    	|
 |	   PA15   	|	 JTAG DI     	|
 |	   PA13   	|	 JTAG DIO    	|
 |	   PB03   	|	 JTAG DO     	|
+|	----------	|	----------	|
+|	   PA10   	|	 USB OTG DB  	|
+|	   PA11   	|	 USB OTG DP  	|
+|	   PA09   	|	 USB OTG VBUS 	|
 
 # Appendix B - Further Exploring the MCU
 
