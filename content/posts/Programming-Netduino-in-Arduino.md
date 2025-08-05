@@ -1,6 +1,6 @@
 ---
-date: "2025-07-30T12:31:35-04:00"
-draft: true
+date: "2025-08-04T20:35:35-04:00"
+draft: false
 title: Programming the Netduino with Arduino
 description: "Believe it or not, it's an Arduino compatible device."
 tags: ["Netduino", "Arduino", "STCube"]
@@ -9,9 +9,9 @@ series: ["Netduino"]
 ShowToc: true
 ---
 
-If you have one of these in your toolbox you might've thought they were obsolete.  Their .Net support and tools are still around but unfortunately have gone dormant and the .Net MicroFramework toolchain for these boards may not even work on modern operating systems.  However, this black clad board with it's blue GPIO pins is not dead.  It boasts a powerful 32-bit ARM&reg; microcontroller running at 25Mhz that can run custom firmware and even work with Arduino.  
+If you have one of these in your toolbox you might've thought they were obsolete.  Their .Net Microframework and tools are still around but unfortunately those projects have gone dormant and the toolchain for these boards may not even work on modern operating systems.  However, this black clad board with it's blue pins is not dead.  It boasts a powerful 32-bit ARM&reg; microcontroller running at 25Mhz that can run custom firmware and even work with Arduino.  
 
-Yep, that's possible and without crossing wires, waving any magic wands, or opening a worm hole to an alternate universe. I'm about to explain how to setup the Arduino IDE to program your Netduino 2.  That means no more .Net MicroFramework, no more Visual Studio 2015.  Just you, your Netduino board and the Arduino IDE.  If you want to skip the fluff and get down to programming, jump to the [Arduino setup](#setting-up-the-arduino-ide) section below.
+Yep, that's possible without crossing wires, waving any magic wands, or opening a worm hole to an alternate universe. This post will explain how to setup the Arduino IDE to program your Netduino 2.  That means no more .Net MicroFramework, no more Visual Studio 2015.  Just you, your Netduino and the Arduino IDE.  If you want to skip the fluff and get down to programming, jump to the [Arduino setup](#setting-up-the-arduino-ide) section below.
 
 ![Netduino 2](/Netduino2.jpg)
 
@@ -21,11 +21,11 @@ Yep, that's possible and without crossing wires, waving any magic wands, or open
 
 The Netduino 2 board is built with a standard Arduino Uno compatable footprint.  It has a 25Mhz clock crystal, [USB OTG](https://en.wikipedia.org/wiki/USB_On-The-Go) support, power LED, user-programmable blue LED, user/boot button, 6 Analog pins, and 13-15 digital pins.  If you take a look at the [Schematic](/Schematic_N2_20Dec16.pdf), you'll find the microcontroller is the [STM23F205RFT6](https://www.st.com/en/microcontrollers-microprocessors/stm32f205rf.html), a high-performance ARM&reg; Cortex&reg;-M2 32-bit processor manufactured by STMicroelectronics with a [10 year longevity committment](https://www.st.com/content/st_com/en/support/resources/product-longevity.html#10-year-longevity).  Which means they'll support it until at least 2035.  Nice to know this board is far from being obsolete.  If you're interested you can read more about this chip in it's [datasheet](https://www.st.com/resource/en/datasheet/stm32f205rb.pdf). 
 
-When [Wilderness Labs LLC](https://www.wildernesslabs.co) designed this board they knew users would want to keep their .Net firmware up to date, so they configured it to allow you to put it into bootloader mode.  That also means you can load you're own firmware and use all of the tools in the [STMCube ecosystem](https://www.st.com/content/st_com/en/ecosystems/stm32cube-ecosystem.html) to program this device (more details on that in future posts).  But, whats even more intriguing is that you can use the [STM32duino](https://github.com/stm32duino) board support package to enable the Arduino IDE to recognize, program and possibly even debug this board.  Wow! I have to admit I really didn't think that was possible.  Before I tried this, I thought this board would only handle development using .Net MF development.  Well, hold on, we're on our way to bending time and space.
+When [Wilderness Labs LLC](https://www.wildernesslabs.co) (a.k.a. Secret Labs) designed this board they knew users would want to keep their .Net firmware up to date, so they set it up to with a firmware update (bootloader or DFU - Device Firmware Update) mode.  That means you can upload you're own firmware and use all of the tools in the [STMCube ecosystem](https://www.st.com/content/st_com/en/ecosystems/stm32cube-ecosystem.html) to program this device (more details on that in future posts).  But, whats even more intriguing is that you can use the [STM32duino](https://github.com/stm32duino) board support package to enable the Arduino IDE to recognize, program and possibly even debug this board.  Wow! I have to admit I didn't think that was possible.  Before I tried this, I thought this board would only handle development using .Net MF development.  
 
-# Arduino Assistance from ST
+# Arduino Tools from ST
 
-STMicroelectronics manages a [Github organization called STM32duino](https://github.com/stm32duino) with open source repositories containing the Arduino board support files and tools for their chipsets.  Even though it's not officially supported by ST, there's a community based [STM32duino support forum](https://www.stm32duino.com/) you can use to connect with other STM32duino users and troubleshoot issues.
+STMicroelectronics manages a [Github organization called STM32duino](https://github.com/stm32duino) with open source repositories containing the Arduino board support files and tools for their chipsets.  Even though it's not under the official ST support, there's a community based [STM32duino support forum](https://www.stm32duino.com/) that can connect you STM32duino users who can assist you and help troubleshoot issues.
 
 # Setting up the Arduino IDE
 1. Install the [STM32CubeProgrammer](https://www.st.com/en/development-tools/stm32cubeprog.html)
@@ -43,18 +43,18 @@ STMicroelectronics manages a [Github organization called STM32duino](https://git
    * Search for '**STM32**' and install the 'STM32 MCU based boards by STMicroelectronics' package
     ![Arduino Board Package Selection STM32](/Netduino2ArduinoBoardPackage.png)
 2. Select and configure the 'Generic STM32F2 Series' board
-   * Back on the **Tools -> Board** menu you should see a new 'STM32 32 MCU based boards' group.
+   * Back on the **Tools -> Board** menu you should see a new 'STM32 MCU based boards' group.
    * Select the 'Generic STM32F2 Series' board from the dropdown. 
     ![Arduino Board Board Selection STM32F2 Series](/Netduino2ArduinoBoardSelection.png)
    * You'll notice that your Tools menu now has more options.
    * From the Tools menu, set the following additional options
      * Board Port Number = 'STM32F205RFTx'
-     * Upload Method 'STM32CubeProgrammer (DFU)'
-     * USB Support = 'CDC generic 'Serial' supersede U(S)ART' (may be optional but I think necessary for the Serial Monitor to work.)
+     * Upload Method = 'STM32CubeProgrammer (DFU)'
+     * USB Support = 'CDC generic 'Serial' supersede U(S)ART' (necessary for the Serial Monitor to work)
 
 # Blinking the LED
 
-Ok, you're IDE is all configured let's get some code going to get our LED blinking.  Go ahead and open up the Blink example (File -> Examples -> 01.Basic -> Blink) and modify it to work on the Netduino 2.
+Ok, you're IDE is all configured let's get some code written and get that LED blinking.  Go ahead and open up the Blink example (File -> Examples -> 01.Basic -> Blink) and modify it to work on the Netduino 2.
 
 1. First, I don't think the LED_BUILTIN define has the right pin set so let's modify the code to use PA10 which, according to the Schematic is where our blue LED is wired too.  It's nice to know that the board definitions have these pins mapped, It will make your life a lot easier going forward.
    ```C
@@ -137,7 +137,7 @@ Well Done!
 
 # Blinking on Button Press
 
-Let's take this a step further and get our beautiful blue LED to blink on command.  This step involves us using the built in button (PB11) to toggle our LED (PA10) instead of using a delay.  You can use your current Blink making some adjustments.
+Let's take this a step further and get our beautiful blue LED to blink on command.  This step involves us using the built in button (PB11/PC14) to toggle our LED (PA10) instead of using a delay.  You can use your current Blink making some adjustments.
 
 1. Add the following lines to the top of your sketch, (just above the setup() function) to help us track the state of the LED and button.
     ```c
@@ -179,11 +179,11 @@ Let's take this a step further and get our beautiful blue LED to blink on comman
 
     // the setup function runs once when you press reset or power the board
     void setup() {
-    // initialize digital pin LED_BUILTIN as an output.
-    pinMode(PA10, OUTPUT);
+        // initialize digital pin LED_BUILTIN as an output.
+        pinMode(PA10, OUTPUT);
 
-    pinMode(PB11, INPUT_PULLUP); // Set button pin as input with pull-up resistor
-    digitalWrite(PA10, LOW);       // Ensure LED starts OFF
+        pinMode(PB11, INPUT_PULLUP); // Set button pin as input with pull-up resistor
+        digitalWrite(PA10, LOW);       // Ensure LED starts OFF
     }
 
     // the loop function runs over and over again forever
@@ -204,6 +204,55 @@ Let's take this a step further and get our beautiful blue LED to blink on comman
 
     ```
 
+# Extra Credit
+
+Now that you've got the basics down, try and figure out how to write some messages back to the serial console. First make sure you've set the USB Support to 'CDC generic 'Serial' supersede U(S)ART' in the "Tools" menu.  You'll need to add some code to the setup() fuction to enable the serial port and then some Serial.print() or Serial.println() method calls to send out the text.  Once you've uploaded your code to the ~~Net~~duino and the device has reset, open the Serial Monitor in the IDE watch for your messages to appear.  If you run into difficulities, expand the next section to see the previous example outfitted with some serial output.  
+
+<details>
+<summary>Show me the code!</summary>
+
+### Button Blink with Serial Output
+
+```c
+// Variables to track button and LED states
+bool ledState = false;    // Current state of the LED (ON/OFF)
+bool lastButtonState = LOW; // Previous state of the button
+bool currentButtonState = LOW;
+
+// the setup function runs once when you press reset or power the board
+void setup() {
+    Serial.begin(9600); // Start serial communication at 9600 baud
+    Serial.println("Hello, Serial Communication!");
+
+    // initialize digital pin LED_BUILTIN as an output.
+    pinMode(PA10, OUTPUT);
+
+    pinMode(PB11, INPUT_PULLUP); // Set button pin as input with pull-up resistor
+    digitalWrite(PA10, LOW);       // Ensure LED starts OFF
+}
+
+// the loop function runs over and over again forever
+void loop() {
+    // Read the current state of the button
+    currentButtonState = digitalRead(PB11);
+
+    // Check if the button was pressed and released (transition from HIGH to LOW)
+    if (lastButtonState == HIGH && currentButtonState == LOW) {
+        ledState = !ledState;          // Toggle the LED state
+        digitalWrite(PA10, ledState); // Update the LED
+        delay(50);                     // Debounce delay
+        Serial.print("LED is ");
+        Serial.println((ledState == LOW)? "Off" : "On");
+    }
+
+    // Update the last button state
+    lastButtonState = currentButtonState;
+}
+
+```
+
+</details>
+
 # Wrap Up
 
 Well you did it!  Nice job!  You just taught your Netduino a few new tricks.  You can officially call it a ~~Net~~duino.  If you ran into any problems you couldn't solve or noticed something amiss in the steps above let me know and I'll do my best to fix it.  Otherwise I'll wish you great success with your revived ~~Net~~duino.  May you always...
@@ -223,18 +272,6 @@ To help you with programming your ~~Net~~duino with Arduino you'll need to know 
 |	   PC04   	|	 A4   	|
 |	   PC05   	|	 A5   	|
 |	----------	|	----------	|
-|	   PA10   	|	 Blue LED    	|
-|	   PC13   	|	 Power LED 	|
-|	   PB11   	|	 User Button 	|
-|	   PC14   	|	 User Button 	|
-|	----------	|	----------	|
-|	   PB07   	|	 SCA  	|
-|	   PB06   	|	 SCL  	|
-|	   PA10   	|	 USB OTG DB  	|
-|	----------	|	----------	|
-|	   PA11   	|	 USB OTG DP  	|
-|	   PA09   	|	 USB OTG VBUS 	|
-|	----------	|	----------	|
 |	   PC07   	|	 D0   	|
 |	   PC06   	|	 D1   	|
 |	   PA03   	|	 D2   	|
@@ -249,10 +286,22 @@ To help you with programming your ~~Net~~duino with Arduino you'll need to know 
 |	   PB15   	|	 D11  	|
 |	   PB14   	|	 D12  	|
 |	----------	|	----------	|
+|	   PB07   	|	 SCA  	|
+|	   PB06   	|	 SCL  	|
+|	----------	|	----------	|
+|	   PA10   	|	 Blue LED    	|
+|	   PC13   	|	 Power LED 	|
+|	   PB11   	|	 User Button 	|
+|	   PC14   	|	 User Button 	|
+|	----------	|	----------	|
 |	   PA14   	|	 JTAG CLK    	|
 |	   PA15   	|	 JTAG DI     	|
 |	   PA13   	|	 JTAG DIO    	|
 |	   PB03   	|	 JTAG DO     	|
+|	----------	|	----------	|
+|	   PA10   	|	 USB OTG DB  	|
+|	   PA11   	|	 USB OTG DP  	|
+|	   PA09   	|	 USB OTG VBUS 	|
 
 # Appendix B - Further Exploring the MCU
 
