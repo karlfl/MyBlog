@@ -75,11 +75,16 @@ Ok, you're IDE is all configured let's get some code written and get that LED bl
 2. Next, we can confirm there are no errors by compiling it.  Once that comes back clear, we should be able to upload the code. 
 3. But before we go there we need to put our board in Bootloader mode.  This is done by holding down the user button (BTN) and applying power.  You should see both the power light and the blue LED light up and stay lit.
    
-   *NOTE: This is the step that uses the STM32Programmer we installed earlier.  If you start getting some 'PATH' related errors, be sure to checkout [what I did](/posts/reviving-my-netunio-2/#a-caveat-for-linux-users) to fix it on my Linux machine.'*
    
-   *ALSO: make sure your using a USB cable that can handle data and not just power.  If you get errors indicating that the programmer couldn't find the board, try a different cable.*
-   
-4. Now we can hit the upload button in the Ardunio IDE.  If all goes well you should see something like this in the output window.
+4. Now we can hit the upload button in the Ardunio IDE.  
+    <br/>
+
+    *NOTE: This is the step that uses the STM32Programmer we installed earlier.  If you start getting some 'PATH' related errors, be sure to checkout [what I did](/posts/reviving-my-netunio-2/#a-caveat-for-linux-users) to fix it on my Linux machine.'*
+
+    *ALSO: make sure your using a USB cable that can handle data and not just power.  If you get errors indicating that the programmer couldn't find the board, try a different cable.*
+
+    <br/>
+    If all goes well you should see something like this in the output window.
 
     ```console
     Sketch uses 13016 bytes (9%) of program storage space. Maximum is 131072 bytes.
@@ -151,7 +156,7 @@ Let's take this a step further and get our beautiful blue LED to blink on comman
     pinMode(PB11, INPUT_PULLUP); // Set button pin as input with pull-up resistor
     digitalWrite(PA10, LOW);     // Ensure LED starts OFF
     ```
-3. Moving on to the main loop(). you're going to replace all of the code in this function with some new logic. First you'll get the current state of our button.  Next, if you've fully pressed and released the button (last state was pressed/high and current state is unpressed/low), you can go ahead and toggle the led state by inverting the boolean and then writing to the pin.  The delay adds a small pause a to debounce the button.  Finally you'll set the lastButtonState so we can keep track of what just happened.  Here's the new loop() function.
+3. Moving on to the main loop(). you're going to replace all of the code in this function with some new logic. First you'll get the current state of our button.  Next, if you've fully pressed and released the button (last state was pressed/high and current state is unpressed/low), you can go ahead and toggle the led state by inverting the boolean and then writing to the pin.  The delay adds a small pause to debounce the button.  Finally you'll set the lastButtonState so we can keep track of what just happened.  Here's the new loop() function.
 
     ```c
     void loop() {
@@ -206,7 +211,7 @@ Let's take this a step further and get our beautiful blue LED to blink on comman
 
 # Extra Credit
 
-Now that you've got the basics down, try and figure out how to write some messages back to the serial console. First make sure you've set the USB Support to 'CDC generic 'Serial' supersede U(S)ART' in the "Tools" menu.  You'll need to add some code to the setup() fuction to enable the serial port and then some Serial.print() or Serial.println() method calls to send out the text.  Once you've uploaded your code to the ~~Net~~duino and the device has reset, open the Serial Monitor in the IDE watch for your messages to appear.  If you run into difficulities, expand the next section to see the previous example outfitted with some serial output.  
+Now that you've got the basics down, try and figure out how to write some messages back to the serial console. First, make sure you've set the USB Support to 'CDC generic 'Serial' supersede U(S)ART' in the "Tools" menu.  You'll need to add some code to the setup() fuction to enable the serial port and then some Serial.print() or Serial.println() method calls to send out the text.  Once you've uploaded your code to the ~~Net~~duino and the device has reset, open the Serial Monitor in the IDE watch for your messages to appear.  If you run into difficulities, expand the next section to see the previous example outfitted with some serial output.  
 
 <details>
 <summary>Show me the code!</summary>
@@ -265,29 +270,29 @@ To help you with programming your ~~Net~~duino with Arduino you'll need to know 
 
 |	  MCU Pin 	|	  Board Pin 	|
 |	----------	|	----------	|
-|	   PC00   	|	 A0   	|
-|	   PC01   	|	 A1   	|
-|	   PC02   	|	 A2   	|
-|	   PC03   	|	 A3   	|
-|	   PC04   	|	 A4   	|
-|	   PC05   	|	 A5   	|
+|	   PC0   	|	 A0   	|
+|	   PC1   	|	 A1   	|
+|	   PC2   	|	 A2   	|
+|	   PC3   	|	 A3   	|
+|	   PC4   	|	 A4   	|
+|	   PC5   	|	 A5   	|
 |	----------	|	----------	|
-|	   PC07   	|	 D0   	|
-|	   PC06   	|	 D1   	|
-|	   PA03   	|	 D2   	|
-|	   PA02   	|	 D3   	|
+|	   PC7   	|	 D0   	|
+|	   PC6   	|	 D1   	|
+|	   PA3   	|	 D2   	|
+|	   PA2   	|	 D3   	|
 |	   PB12   	|	 D4   	|
-|	   PB08   	|	 D5   	|
-|	   PB09   	|	 D6   	|
-|	   PA01   	|	 D7   	|
-|	   PA00   	|	 D8   	|
-|	   PA06   	|	 D9   	|
+|	   PB8   	|	 D5   	|
+|	   PB9   	|	 D6   	|
+|	   PA1   	|	 D7   	|
+|	   PA0   	|	 D8   	|
+|	   PA6   	|	 D9   	|
 |	   PB10   	|	 D10    	|
 |	   PB15   	|	 D11  	|
 |	   PB14   	|	 D12  	|
 |	----------	|	----------	|
-|	   PB07   	|	 SCA  	|
-|	   PB06   	|	 SCL  	|
+|	   PB7   	|	 SCA  	|
+|	   PB6   	|	 SCL  	|
 |	----------	|	----------	|
 |	   PA10   	|	 Blue LED    	|
 |	   PC13   	|	 Power LED 	|
@@ -297,14 +302,13 @@ To help you with programming your ~~Net~~duino with Arduino you'll need to know 
 |	   PA14   	|	 JTAG CLK    	|
 |	   PA15   	|	 JTAG DI     	|
 |	   PA13   	|	 JTAG DIO    	|
-|	   PB03   	|	 JTAG DO     	|
+|	   PB3   	|	 JTAG DO     	|
 |	----------	|	----------	|
 |	   PA10   	|	 USB OTG DB  	|
 |	   PA11   	|	 USB OTG DP  	|
-|	   PA09   	|	 USB OTG VBUS 	|
 
 # Appendix B - Further Exploring the MCU
 
-As I read the datasheet and look again at the Netduino schematic, I see that this MCU can do quite a bit more than may be advertized.  There are several other features that may be worth the time to explore.  Among them are, the CAN bus, SPI, UART/USART, PWM.  At first glance it would seem that the Netduino board would support all of these.  The CAN may require an external transciever, but the pins seem to be available.  CAN1 seems to be available on PB8/9 pins which map to D6/D10 on the Netduino.
+As I read the datasheet and look again at the Netduino schematic, I see that this MCU can do quite a bit more than I was aware.  There are several features that may be worth the time to explore.  Among them are, the CAN bus, SPI, UART/USART, PWM.  At first glance it would seem that the Netduino board would support all of these.  The CAN may require an external transciever, but the pins may be available.  I think CAN1 is on PB8/9 pins which map to D5/D6 on the Netduino.
 
 Another area worth exploring would be the JTAG connector and the possibility of using an ST-Link hardware to run the Arduino debugger.  This [ST Community Post](https://community.st.com/t5/stm32-mcus/stm32-arduino-stm32duino-tutorial/ta-p/49649) indicates that it is possible for some ST Boards to be debugged using Arduino.  The only difference is that the ST boards come with a built in ST-Link programmer/debugger.  It might be possible to use the JTAG connector on the Netduino to attach the ST-Link device and use it within Arduino.
