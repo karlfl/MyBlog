@@ -4,7 +4,7 @@ draft: false
 title: Programming the Netduino with Arduino
 description: "It is an Arduino compatible device."
 tags: ["Netduino", "Arduino", "STCube"]
-categories: ["Arduino", "MCU"]
+categories: ["Arduino", "MCU", "STM32"]
 series: ["Netduino"]
 ShowToc: true
 ---
