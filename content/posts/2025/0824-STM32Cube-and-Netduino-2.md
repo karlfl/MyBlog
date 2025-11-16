@@ -159,14 +159,18 @@ That's it.  If all went well you should see the blue LED blinking away.  Well do
 ![Netduino 2 Blinking Blue](/Netduino2BlinkyLight.gif)
 
 # Before We Go
-Let's write some code to use the user button (BTN) along with that LED.  This will also help us understand how to modify our project configuration since we need to enable the button using the STM32CubeMX tool.
+Let's write some code to use the user button (BTN) along with that LED.  This will also help us understand how to modify our project configuration since we need to enable the button using the STM32CubeMX tool.  If you go back to the schematic you'll see the user button (SWITCH1 in the schematic) is wired to two pins, PB11 and PC14.  Keep thin mind, we'll only need one of those pins in a minute when we configure our board. 
+
+*Note: The switch is also wired to BOOT0, but that's used to put the MCU in bootloader mode and probably not programmable.*  
+
+![Netduino 2 Schematic Button Wiring](/Netduino2SchematicMCUandButton.png)
 
 ## Back to the STM32 Tools
 1. Re-open the STM32CubeMX tool.  If it's still open you can just switch to it.  If not, click the **Launch STM32CubeMx** from the STM32 action bar in VS Code.
 2. If you're re-opening the STM32CubeMX software you'll need to re-open the configuration (*.ioc) file using the "Existing Projects" list.
-3. Once open, **left-click** on the **PB10** pin in the Pinout diagram (pin should be in the bottom right corner), and select **GPIO INPUT**
+3. Once open, **left-click** on the **PB11** pin in the Pinout diagram (pin should be in the bottom right corner), and select **GPIO INPUT**
 4. Expand the **System Core** section in the tree view on the left and select **GPIO**.
-5. In the **Configuration** window click the **PB10** entry and change the **User Label** to "BTN"
+5. In the **Configuration** window click the **PB11** entry and change the **User Label** to "BTN"
 
 Your configuration should now look like this..
 ![STM32CubeMX Configuration with user Button](/STM32CubeMXPinoutButton.png)
