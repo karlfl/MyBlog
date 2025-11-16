@@ -1,4 +1,6 @@
 # Generated files by hugo
+/ebug/
+/debug/
 /public/
 /resources/_gen/
 /assets/jsconfig.json
