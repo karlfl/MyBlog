@@ -40,7 +40,7 @@ Here's a snapshot of my settings page (Linux).
 
 # Creating Your First Project
 
-It's time to get that LED blinking.  Bring up the VS Code window if it's not already up.  You should have a new icon in the activity bar on the left that should reveal the STM32Cube tools window.  Let's start with the Launch STM32CubeMX link.  As the external tool opens, you may notice it download some support packages.  If you get any errors during this step, create an account on the STM32 site.  I found that once I created my account and logged into their site I no longer saw that error.  Once the tool opens, select the 'Start My Project from MCU' (MCU = [Microcontroller Unit](https://en.wikipedia.org/wiki/Microcontroller)) link in the middle of the screen.  This will open the product selector window open. Make sure the "MCU/MPU Selector" tab is selected and enter **STM32F205RFT6** in the **Commercial Part Number** box.  Now highlight that same part number in the list on the bottom right.  Once selected, the top right section will display details about the MCU, including links to ST product pages and datasheet.  Useful if you want to dive deeper into this product line.  You're screen should look something like this.
+It's time to get that LED blinking.  Bring up the VS Code window if it's not already up.  You should have a new icon in the activity bar on the left that should reveal the STM32Cube tools window.  Let's start with the Launch STM32CubeMX link.  As the external tool opens, you may notice it download some support packages.  If you get any errors during this step, create an account on the STM32 site.  I found that once I created my account and logged into their site I no longer saw that error.  Once the tool opens, select the 'Start My Project from MCU' (MCU = [Microcontroller Unit](https://en.wikipedia.org/wiki/Microcontroller)) link in the middle of the screen.  This will open the product selector window. Make sure the "MCU/MPU Selector" tab is selected and enter **STM32F205RFT6** in the **Commercial Part Number** box.  Now highlight that same part number in the list on the bottom right.  Once selected, the top right section will display details about the MCU, including links to ST product pages and datasheet.  Useful if you want to dive deeper into this product line.  You're screen should look something like this.
 
 ![STM32CubeMX Product Selector](/STM32CubeMXProductSelector.png)
 
@@ -159,14 +159,18 @@ That's it.  If all went well you should see the blue LED blinking away.  Well do
 ![Netduino 2 Blinking Blue](/Netduino2BlinkyLight.gif)
 
 # Before We Go
-Let's write some code to use the user button (BTN) along with that LED.  This will also help us understand how to modify our project configuration since we need to enable the button using the STM32CubeMX tool.
+Let's write some code to use the user button (BTN) along with that LED.  This will also help us understand how to modify our project configuration since we need to enable the button using the STM32CubeMX tool.  If you go back to the schematic you'll see the user button (SWITCH1 in the schematic) is wired to two pins, PB11 and PC14.  Keep thin mind, we'll only need one of those pins in a minute when we configure our board. 
+
+*Note: The switch is also wired to BOOT0, but that's used to put the MCU in bootloader mode and probably not programmable.*  
+
+![Netduino 2 Schematic Button Wiring](/Netduino2SchematicMCUandButton.png)
 
 ## Back to the STM32 Tools
 1. Re-open the STM32CubeMX tool.  If it's still open you can just switch to it.  If not, click the **Launch STM32CubeMx** from the STM32 action bar in VS Code.
 2. If you're re-opening the STM32CubeMX software you'll need to re-open the configuration (*.ioc) file using the "Existing Projects" list.
-3. Once open, **left-click** on the **PB10** pin in the Pinout diagram (pin should be in the bottom right corner), and select **GPIO INPUT**
+3. Once open, **left-click** on the **PB11** pin in the Pinout diagram (pin should be in the bottom right corner), and select **GPIO INPUT**
 4. Expand the **System Core** section in the tree view on the left and select **GPIO**.
-5. In the **Configuration** window click the **PB10** entry and change the **User Label** to "BTN"
+5. In the **Configuration** window click the **PB11** entry and change the **User Label** to "BTN"
 
 Your configuration should now look like this..
 ![STM32CubeMX Configuration with user Button](/STM32CubeMXPinoutButton.png)
