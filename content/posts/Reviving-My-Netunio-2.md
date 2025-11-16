@@ -3,7 +3,7 @@ date: "2025-07-30T12:31:35-04:00"
 draft: false
 title: Reviving My Netduino 2
 description: "(without the .Net MF)"
-tags: ["Netduino", "Arduino", "STCube"]
+tags: ["Netduino", "Arduino", "STM32Cube"]
 categories: ["Arduino", "MCU"]
 series: ["Netduino"]
 ShowToc: true
