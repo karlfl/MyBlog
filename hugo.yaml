@@ -62,6 +62,7 @@ params:
   defaultTheme: auto
   # disableThemeToggle: true
   ShowShareButtons: true
+  ShowFullTextinRSS: true
   Sharebuttons: x, linkedin, reddit
   ShowReadingTime: true
   # disableSpecial1stPost: true
