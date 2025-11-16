@@ -159,7 +159,7 @@ That's it.  If all went well you should see the blue LED blinking away.  Well do
 ![Netduino 2 Blinking Blue](/Netduino2BlinkyLight.gif)
 
 # Before We Go
-Let's write some code to use the user button (BTN) along with that LED.  This will also help us understand how to modify our project configuration since we need to enable the button using the STM32CubeMX tool.  If you go back to the schematic you'll see the user button (SWITCH1 in the schematic) is wired to two pins, PB11 and PC14.  Keep thin mind, we'll only need one of those pins in a minute when we configure our board. 
+Let's write some code to use the user button (BTN) along with that LED.  This will also help us understand how to modify our project configuration since we need to enable the button using the STM32CubeMX tool.  If you go back to the schematic you'll see the user button (SWITCH1 in the schematic) is wired to two pins, PB11 and PC14.  Keep this mind, we'll need one of those pins in a minute when we configure our board. 
 
 *Note: The switch is also wired to BOOT0, but that's used to put the MCU in bootloader mode and probably not programmable.*  
 
